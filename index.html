@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111827">
+<title>Zino Store | كل طرق التواصل والدفع</title>
+<style>
+:root{--bg:#0b1020;--card:#151d31;--ink:#fff;--muted:#b9c4d8;--gold:#f5c451}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:radial-gradient(circle at top,#25314d 0,#0b1020 55%);color:var(--ink);min-height:100vh;padding:24px 14px}
+main{max-width:520px;margin:auto}
+.hero{text-align:center;padding:24px 16px 18px}
+.logo{width:82px;height:82px;margin:0 auto 14px;border:2px solid var(--gold);border-radius:24px;display:grid;place-items:center;font-weight:900;font-size:25px;color:var(--gold);transform:rotate(-3deg);box-shadow:0 8px 30px #0005}
+h1{font-size:32px;letter-spacing:.4px;margin:8px 0;color:var(--gold)}
+.sub{color:var(--muted);margin:0;font-size:15px;line-height:1.8}
+.card{background:linear-gradient(145deg,#19243a,#111827);border:1px solid #ffffff16;border-radius:22px;padding:18px;margin:14px 0;box-shadow:0 16px 35px #0003}
+.card h2{font-size:18px;margin:0 0 12px}
+.payrow{display:flex;align-items:center;gap:10px;background:#ffffff08;border:1px solid #ffffff12;border-radius:14px;padding:12px;margin-top:9px}
+.num{direction:ltr;text-align:left;font-size:17px;font-weight:bold;flex:1;letter-spacing:.4px}
+.copy{border:0;border-radius:10px;padding:9px 12px;background:var(--gold);color:#172033;font-weight:bold;cursor:pointer}
+.actions{display:grid;gap:11px}
+a.action{display:flex;align-items:center;gap:12px;text-decoration:none;color:white;padding:15px;border-radius:15px;font-weight:bold;border:1px solid #ffffff17;background:#ffffff08;transition:transform .15s}
+a.action:active{transform:scale(.985)}
+.icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:21px;flex-shrink:0}
+.whatsapp .icon{background:#168c52}.facebook .icon{background:#1877f2}.insta .icon{background:#6d4aff}.wallet .icon{background:#ed7a22}
+.action small{display:block;color:var(--muted);font-weight:normal;margin-top:4px}
+footer{text-align:center;color:#8f9bb2;font-size:12px;padding:20px 8px 8px}
+.note{font-size:12px;color:var(--muted);line-height:1.8;margin:12px 2px 0}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#f5c451;color:#172033;padding:10px 16px;border-radius:12px;font-weight:bold;display:none}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <div class="logo">ZINO</div>
+    <h1>Zino Store</h1>
+    <p class="sub">كل طرق التواصل والدفع في مكان واحد ✨<br>اختار الطريقة المناسبة ليك</p>
+  </header>
+
+  <section class="card">
+    <h2>💳 محافظ أورانج كاش</h2>
+    <div class="payrow"><div><div style="color:#b9c4d8;font-size:12px;margin-bottom:5px">المحفظة الأولى</div><div class="num">01289800027</div></div><button class="copy" onclick="copyText('01289800027')">نسخ الرقم</button></div>
+    <div class="payrow"><div><div style="color:#b9c4d8;font-size:12px;margin-bottom:5px">المحفظة الثانية</div><div class="num">01283878403</div></div><button class="copy" onclick="copyText('01283878403')">نسخ الرقم</button></div>
+  </section>
+
+  <section class="card">
+    <h2>📲 تواصل معانا</h2>
+    <div class="actions">
+      <a class="action whatsapp" href="https://chat.whatsapp.com/KgUJpgpPpO8EmVQ76ed9zE?s=cl&amp;p=a&amp;mlu=4&amp;ilr=4" target="_blank" rel="noopener">
+        <span class="icon">☏</span><span>انضم لجروب الواتساب<small>تابع الجديد والعروض</small></span>
+      </a>
+      <a class="action facebook" href="https://www.facebook.com/profile.php?id=100063857932246" target="_blank" rel="noopener">
+        <span class="icon">f</span><span>صفحة Zino Store على فيسبوك<small>شوف المنتجات وآخر الأخبار</small></span>
+      </a>
+      <a class="action insta" href="https://www.instapay.eg/" target="_blank" rel="noopener">
+        <span class="icon">↗</span><span>إنستا باي<small>رقم التحويل: 01289800027 — انسخه من هنا</small></span>
+      </a>
+    </div>
+    <div class="payrow"><div><div style="color:#b9c4d8;font-size:12px;margin-bottom:5px">رقم إنستا باي</div><div class="num">01289800027</div></div><button class="copy" onclick="copyText('01289800027')">نسخ الرقم</button></div>
+    <p class="note">ملاحظة: زر إنستا باي يفتح الموقع الرسمي فقط؛ تأكد من بيانات المستلم داخل تطبيق InstaPay قبل التحويل.</p>
+  </section>
+  <footer>© Zino Store • شكرًا لثقتكم ❤️</footer>
+</main>
+<div class="toast" id="toast">تم نسخ الرقم</div>
+<script>
+function copyText(value){
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(value).then(showToast).catch(()=>fallbackCopy(value));
+  }else fallbackCopy(value);
+}
+function fallbackCopy(value){
+  const input=document.createElement('textarea');input.value=value;input.style.position='fixed';input.style.opacity='0';document.body.appendChild(input);input.select();
+  try{document.execCommand('copy');showToast()}catch(e){alert('انسخ الرقم يدويًا: '+value)}
+  input.remove();
+}
+function showToast(){const t=document.getElementById('toast');t.style.display='block';setTimeout(()=>t.style.display='none',1800)}
+</script>
+</body>
+</html>
